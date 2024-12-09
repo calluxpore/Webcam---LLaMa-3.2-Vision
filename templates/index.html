@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam View</title>
+    <style>
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+        }
+        .image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .caption-container {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto; /* Allow scrolling if captions are long */
+        }
+        img {
+            max-width: 100%; /* Responsive image */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="webcam_image.png" alt="Captured Image">
+    </div>
+    <div class="caption-container">
+        <h2>Image Description</h2>
+        <pre>
+            <!-- Captions will be inserted here -->
+            <?php
+                // Read the captions from the text file
+                $captions = file_get_contents('llama_output.txt');
+                echo htmlspecialchars($captions);
+            ?>
+        </pre>
+    </div>
+</body>
+</html>
